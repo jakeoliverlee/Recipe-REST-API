@@ -15,6 +15,7 @@ EXPOSE 8000
 
 ARG DEV=false
 # Establishes virtual env inside the docker image, installs requirements, removes tmp directory, add a new user which isn't the root user.
+RUN pip install flake8
 RUN python -m venv /py && \
 /py/bin/pip install --upgrade pip && \
 /py/bin/pip install -r /tmp/requirements.txt && \
@@ -27,6 +28,9 @@ adduser \
     --disabled-password \
     --no-create-home \
     django-user
+
+    
+
 
 ENV PATH="/py/bin:$PATH"
 
