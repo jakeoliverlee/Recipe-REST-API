@@ -1,0 +1,8 @@
+
+[flake8]
+# Tells Flake8 to exclude the following files from the linting process. Mainly Django generated files
+exclude = 
+    migrations,
+    __pycache__,
+    manage.py,
+    settings.py

@@ -1,0 +1,18 @@
+
+# Git
+.git 
+.gitignore 
+
+# Docker
+.docker 
+
+# Remove python cache, since sometimes the cache may contain specific information about the local machine the app is being developed on.
+# Also it makes the docker image more lightweight.
+# Python 
+app/__pycache__/
+app/*/__pycache__/
+app/*/*/__pycache__/
+app/*/*/*/__pycache__/
+.env/
+.venv/
+venv/ 

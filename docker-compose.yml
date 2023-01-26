@@ -1,0 +1,18 @@
+# Version of the docker compose syntax we will be using.
+version: "3.9"
+
+services:
+  app:
+    build:
+      # Build using the current directory docker-compose.yml resides in. 
+      context: .
+      args:
+        - DEV=true
+    ports:
+      # Maps port 8000 from local machine: docker container.
+      - "8000:8000"
+    volumes:
+      # Maps the app directory on the local machine to the docker container. This allows any changes to the code made on local machine to be reflected on the docker container without a rebuild.
+      - ./app:/app
+    command: >
+      sh -c "python manage.py runserver 0.0.0.0:8000"
