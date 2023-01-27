@@ -15,13 +15,12 @@ EXPOSE 8000
 
 ARG DEV=false
 # Establishes virtual env inside the docker image, installs requirements, removes tmp directory, add a new user which isn't the root user.
-RUN pip install flake8
 RUN python -m venv /py && \
 /py/bin/pip install --upgrade pip && \
 /py/bin/pip install -r /tmp/requirements.txt && \
 # If DEV environment variable = true, install dev dependencies.
 if [ $DEV = "true"]; \
-    then /py/bin/pip install /tmp/requirements.dev.txt ; \
+    then /py/bin/pip install flake8 /tmp/requirements.dev.txt ; \
 fi && \
 rm -rf /tmp && \
 adduser \
